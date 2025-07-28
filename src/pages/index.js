@@ -1,26 +1,28 @@
 import { useState } from 'react';
 
 export default function Home() {
-  const [movie, setMovie] = useState('');
+  const [input, setInput] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('StreamList Entry:', movie);
-    setMovie('');
+    console.log('StreamList Input:', input);
+    setInput('');
   };
 
   return (
-    <main style={{ padding: '20px' }}>
+    <main>
       <h1>StreamList</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        <span className="material-icons" style={{ fontSize: '28px', color: '#e50914' }}>
+          search
+        </span>
         <input
           type="text"
-          value={movie}
-          onChange={(e) => setMovie(e.target.value)}
-          placeholder="Enter movie title"
-          style={{ padding: '10px', marginRight: '10px' }}
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Add a movie or show..."
         />
-        <button type="submit">Add to List</button>
+        <button type="submit">Add</button>
       </form>
     </main>
   );
